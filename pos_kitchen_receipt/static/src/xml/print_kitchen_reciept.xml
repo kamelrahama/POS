@@ -1,0 +1,81 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>  -->
+<templates id="template" xml:space="preserve">
+
+    <t t-name="pos_kitchen_receipt.KitchenReceipt">
+        <div class="pos-receipt" style="font-size: 18px;"> <!-- Increased font size -->
+            <h3 style="text-align: center;">Table: <t t-esc="tableNumber"/></h3> <!-- Added Table Number -->
+            <!-- <h2 style="text-align: center;">Order Time: <t t-esc="orderTime"/></h2> Added Order Time -->
+            <table style="width: 100%; border-collapse: collapse; margin-top: 20px;"> <!-- Styled table -->
+                <tr style="font-weight: bold; border-bottom: 2px solid black;">
+
+                     <th> Qty     </th>
+                    <th>        Name </th>
+                    <th>        Note </th>
+                    
+                    <!-- <th>Category</th> -->
+                </tr>
+                <t t-set="lines" t-value="itemInfo"/>
+                <t t-foreach="lines" t-as="line" t-key="line.productName">
+                    <tr style="border-bottom: 1px solid #ddd;">
+                         <td> <h2> <t t-esc="line['qty']"   /> </h2> </td>
+                        <td> <h2> <t t-esc="line['productName']"/> </h2> </td>
+                        <td> <t t-esc="line['customerNote']"/>
+                            <!-- style="text-align:left; padding-left:5px; padding-top:5px; !important"/> -->
+                        </td>
+                <!-- <td>
+                    <t t-if="(orderline.get_quantity() - orderline.done_qty) !== 0">
+                    <t t-esc="orderline.get_quantity() - orderline.done_qty"
+                                        class="pos-receipt-right-align"/>
+                    </t>
+                </td> -->
+                        <!-- <td><t t-esc="line['category']"/></td> -->
+                    </tr>
+                </t>
+            </table>
+        </div>
+    </t>
+    <!-- <table class='pos-receipt' align="center;">
+    <colgroup>
+        <col width='50%'/>
+        <col width='10%'/>
+    </colgroup>
+    <th style="text-align : left; border-bottom: 1px solid; font-size: revert; font-weight: bold;">
+        Product
+    </th>
+    <th style="text-align : right; border-bottom: 1px solid; font-size: revert; font-weight: bold;">
+        Units
+    </th>
+    <tr t-foreach="pos.get_order().get_orderlines()" t-as="orderline" t-key="orderline.id">
+        <t t-if="orderline.kot_print">
+            <td class="pos-right-align" style ="text-align:left; padding-top:10px; !important">
+                <t t-if="(orderline.get_quantity() - orderline.done_qty) !== 0">
+                <strong>
+                    <t t-esc="orderline.get_product().display_name"/>
+                </strong>
+                <br/>
+                    <t t-if="orderline.get_customer_note()">
+                        Note: <t t-esc="orderline.get_customer_note()"
+                            style="text-align:left; padding-left:5px; padding-top:5px; !important"/>
+                    </t>
+                </t>
+            </td>
+            <td>
+                <t t-if="(orderline.get_quantity() - orderline.done_qty) !== 0">
+                    <t t-esc="orderline.get_quantity() - orderline.done_qty"
+                                    class="pos-receipt-right-align"/>
+                </t>
+            </td>
+        </t>
+      </tr>
+    </table> -->
+
+    <t t-name="pos_kitchen_receipt.PrintKitchenReceipt">
+        <span class="control-button order-kitchen-receipt btn btn-light rounded-0 fw-bolder"
+              t-att-class="{'disabled': _isDisabled()}" t-on-click="() => this.click()">
+            <i class="fa fa-print me-1"></i>
+            <span></span>
+            <span>Kitchen Receipt</span>
+        </span>
+    </t>
+
+</templates>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="pos_kitchen_receipt.KitchenReceiptScreen" t-inherit="pos_restaurant.BillScreen">
+        <xpath expr="//div[hasclass('top-content-center')]/h2" position="replace">
+            <h2 class="mb-0 text-start">Kitchen Receipt Printing</h2>
+        </xpath>
+        <xpath expr="//OrderReceipt" position="replace">
+            <KitchenReceipt data="{...pos.get_order().export_for_printing(), isBill: isBill}"
+                            formatCurrency="env.utils.formatCurrency"/>
+        </xpath>
+    </t>
+
+</templates>
