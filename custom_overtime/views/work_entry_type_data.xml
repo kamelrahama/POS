@@ -1,0 +1,8 @@
+<odoo>
+    <record id="work_entry_type_overtime" model="hr.work.entry.type">
+        <field name="name">Overtime</field>
+        <field name="code">OVERTIME</field>
+        <field name="sequence">10</field>
+        <field name="is_paid">True</field>
+    </record>
+</odoo>

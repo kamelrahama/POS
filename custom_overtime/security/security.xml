@@ -1,0 +1,14 @@
+<odoo>
+    <!-- Define a security group if needed -->
+    <record id="group_product_access" model="res.groups">
+        <field name="name">Product Access</field>
+    </record>
+
+    <!-- Restrict access to the product template based on user -->
+    <record id="restrict_product_template_access_rule" model="ir.rule">
+        <field name="name">Restrict Product Template Access</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="groups" eval="[(4, ref('group_product_access'))]"/>
+        <field name="domain_force">[('user_id', '=', user.id)]</field>
+    </record>
+</odoo>

@@ -1,0 +1,15 @@
+<odoo>
+    <record id="view_overtime_tree" model="ir.ui.view">
+        <field name="name">overtime.tree</field>
+        <field name="model">hr.attendance</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="employee_id"/>
+                <field name="check_in"/>
+                <field name="check_out"/>
+                <field name="worked_hours"/>
+                <field name="overtime_hours"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,5 @@
+# security/ir.model.access.csv
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_attendance_overtime,hr.attendance,ohr.model_hr_attendance,,1,0,0,0
+access_hr_payslip_overtime,hr.payslip,hr.model_hr_payslip,,1,1,1,0
+
